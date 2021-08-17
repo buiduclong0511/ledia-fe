@@ -35,11 +35,11 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    transition: height 300ms, backdrop-filter 300ms;
+    transition: height 200ms, backdrop-filter 200ms;
     ${p => p.isScrollDown ? `
         height: 55px;
         backdrop-filter: blur(10px);
-        border-bottom: 1px solid ${p.theme.colors.gray_1};
+        border-bottom: 1px solid ${p.theme.colors.gray_2};
     ` : `
         height: 70px;
         backdrop-filter: blur(0);
