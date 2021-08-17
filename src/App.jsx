@@ -1,5 +1,12 @@
+import styled from "styled-components";
+import { Layout } from "src/layout";
+
 export const App = () => {
     return (
-        <h1>App</h1>
+        <Container>
+            <Layout />
+        </Container>
     );
 };
+
+const Container = styled.div``;
