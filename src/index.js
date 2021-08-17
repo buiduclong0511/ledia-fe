@@ -3,16 +3,20 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
-import "./index.css";
-import { App } from "./App";
-import reportWebVitals from "./reportWebVitals";
+import "src/index.css";
+import { App } from "src/App";
+import reportWebVitals from "src/reportWebVitals";
 import { persistor, store } from "src/redux";
+import { ThemeProvider } from "styled-components";
+import { theme } from "src/utils";
 
 ReactDOM.render(
   <React.StrictMode>
     <PersistGate loading={null} persistor={persistor}>
       <Provider store={store}>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </Provider>
     </PersistGate>
   </React.StrictMode>,
