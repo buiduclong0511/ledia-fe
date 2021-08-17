@@ -3,21 +3,33 @@ import { StyledHomePage, ListSongComponent } from "src/components";
 export const Home = () => {
     const listSongs = [
         {
+            name: "name",
+            singer: "singer",
             cover: "images/ha-con-vuong-nang.jpg"
         },
         {
+            name: "name",
+            singer: "singer",
             cover: "images/ha-con-vuong-nang.jpg"
         },
         {
+            name: "name",
+            singer: "singer",
             cover: "images/ha-con-vuong-nang.jpg"
         },
         {
+            name: "name",
+            singer: "singer",
             cover: "images/ha-con-vuong-nang.jpg"
         },
         {
+            name: "name",
+            singer: "singer",
             cover: "images/ha-con-vuong-nang.jpg"
         },
         {
+            name: "name",
+            singer: "singer",
             cover: "images/ha-con-vuong-nang.jpg"
         },
     ];

@@ -10,14 +10,16 @@ export const ListSongComponent = ({
         <Container>
             <h2 className="heading">{heading}</h2>
             <div className="listSongs">
-                <div className="row">
-                    {listSongs.map(song => {
-                        return (
-                            <div className="col l-2 m-4 c-12">
-                                <SongItemModule data={song} />
-                            </div>
-                        );
-                    })}
+                <div className="grid">
+                    <div className="row">
+                        {listSongs.map(song => {
+                            return (
+                                <div className="col l-2 m-4 c-12">
+                                    <SongItemModule data={song} />
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </Container>

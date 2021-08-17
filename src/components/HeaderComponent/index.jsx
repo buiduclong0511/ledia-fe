@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { StyledButton, StyledButtonUnderLine } from "src/components";
+import { breakpoint } from "src/utils";
 
 export const HeaderComponent = ({
     isScrollDown = false
@@ -22,7 +23,7 @@ export const HeaderComponent = ({
                         <span className="text">Upload</span>
                     </StyledButtonUnderLine>
                 </div>
-                <div className="loginButton">
+                <div className="loginBtn">
                     <StyledButton>Đăng nhập</StyledButton>
                 </div>
             </div>
@@ -36,10 +37,14 @@ const Container = styled.div`
     align-items: center;
     padding: 0 20px;
     transition: height 200ms, backdrop-filter 200ms;
+    position: sticky;
+    top: 0;
+    z-index: 3;
     ${p => p.isScrollDown ? `
         height: 55px;
         backdrop-filter: blur(10px);
         border-bottom: 1px solid ${p.theme.colors.gray_2};
+        box-shadow: 0 2px 10px rgba(0, 0, 0, .5);
     ` : `
         height: 70px;
         backdrop-filter: blur(0);
@@ -47,10 +52,15 @@ const Container = styled.div`
     `}
 
     .inputWrapper {
-        width: 250px;
+        min-width: 300px;
         background-color: ${p => p.theme.colors.gray_1};
         border-radius: 100px;
         position: relative;
+
+        ${breakpoint.breakMobile`
+            min-width: 200px;
+            max-width: 250px;
+        `}
 
         .searchIcon {
             position: absolute;
@@ -73,7 +83,14 @@ const Container = styled.div`
         align-items: center;
 
         .uploadBtn {
-            margin-right: 20px;
+            
+            ${breakpoint.breakMobile`
+                display: none;
+            `}
+        }
+
+        .loginBtn {
+            margin-left: 20px;
         }
     }
 `;

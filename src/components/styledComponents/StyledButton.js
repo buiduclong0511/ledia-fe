@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { breakpoint } from "src/utils";
+
 export const StyledButton = styled.button`
     background-color: ${p => p.theme.colors.main};
     padding: 10px 20px;
@@ -7,6 +9,11 @@ export const StyledButton = styled.button`
     border-radius: 5px;
     transition: 300ms;
     width: 100%;
+
+    ${breakpoint.breakMobile`
+        padding: 10px;
+        font-size: 12px;
+    `}
 
     &:hover {
         background-color: ${p => p.theme.colors.orange};

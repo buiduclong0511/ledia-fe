@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { breakpoint } from "src/utils";
+
 export const StyledHomePage = styled.div`
     padding: 0 20px;
 
@@ -11,5 +13,9 @@ export const StyledHomePage = styled.div`
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
+
+        ${breakpoint.breakMobile`
+            display: none;
+        `}
     }
 `;

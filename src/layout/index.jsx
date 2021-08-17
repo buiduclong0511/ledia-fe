@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import {
     BrowserRouter as Router,
     Switch,
@@ -7,22 +6,18 @@ import {
 
 import { HeaderModule } from "src/modules";
 import { router } from "src/routes";
-import { breakpoint } from "src/utils";
-import { StyledBackground, SidebarComponent } from "src/components";
+import { SidebarComponent } from "src/components";
 
 export const Layout = () => {
     return (
-        <Container>
-            <StyledBackground />
-            <div className="sidebarLayout">
-                <SidebarComponent />
-            </div>
-            <div className="mainContentLayout">
-                <div className="headerLayout">
-                    <HeaderModule />
+        <div className="grid">
+            <div className="row no-gutters">
+                <div className="col l-2 m-3 c-0">
+                    <SidebarComponent />
                 </div>
-                <div className="pageContentLayout">
+                <div className="col l-10 m-9 c-12">
                     <Router>
+                        <HeaderModule />
                         <Switch>
                             {router.map((routerEle, index) => {
                                 return (
@@ -33,40 +28,6 @@ export const Layout = () => {
                     </Router>
                 </div>
             </div>
-        </Container>
+        </div>
     );
 };
-
-const Container = styled.div`
-    display: flex;
-
-    .sidebarLayout {
-        flex: 1;
-
-        ${breakpoint.breakIpadPro`
-            flex: 2;
-        `}
-
-        ${breakpoint.breakMobile`
-            display: none;
-        `}
-    }
-
-    .mainContentLayout {
-        flex: 4;
-        /* padding: 0 20px; */
-
-        ${breakpoint.breakIpadPro`
-            flex: 5;
-        `}
-
-        ${breakpoint.breakMobile`
-            flex: 1;
-        `}
-    }
-
-    .headerLayout {
-        position: sticky;
-        top: 0;
-    }
-`;

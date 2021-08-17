@@ -1,13 +1,35 @@
 import styled from "styled-components";
 
+import { breakpoint, useWindowDimensions } from "src/utils";
+
 export const SongItemComponent = ({
     data = {}
 }) => {
-    console.log(data);
+    const { width } = useWindowDimensions();
     return (
-        <Container>
-            <img src={data.cover} alt="" />
-            <div className="overlay">
+        width > 767 ? (
+            <Container>
+                <img src={data.cover} alt="" />
+                <div className="overlay">
+                    <div className="listBtn">
+                        <button className="btn playBtn">
+                            <i class="far fa-play-circle"></i>
+                        </button>
+                        <button className="btn addBtn">
+                            <i class="fas fa-plus-circle"></i>
+                        </button>
+                    </div>
+                </div>
+            </Container>
+        ) : (
+            <ContainerMobile>
+                <div className="coverImg">
+                    <img src={data.cover} alt="" />
+                </div>
+                <div className="info">
+                    <div className="name">{data.name}</div>
+                    <div className="singer">{data.singer}</div>
+                </div>
                 <div className="listBtn">
                     <button className="btn playBtn">
                         <i class="far fa-play-circle"></i>
@@ -16,14 +38,19 @@ export const SongItemComponent = ({
                         <i class="fas fa-plus-circle"></i>
                     </button>
                 </div>
-            </div>
-        </Container>
+            </ContainerMobile>
+        )
     );
 };
 
 const Container = styled.div`
     cursor: pointer;
     position: relative;
+    margin: 10px;
+
+    ${breakpoint.breakIpadPro`
+        margin-bottom: 15px;
+    `}
 
     &:hover {
         .overlay {
@@ -57,6 +84,37 @@ const Container = styled.div`
                 padding: 5px;
                 font-size: 24px;
             }
+        }
+    }
+`;
+
+const ContainerMobile = styled.div`
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid ${p => p.theme.colors.gray_3};
+
+    .coverImg {
+        width: 80px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .info {
+        padding-left: 10px;
+        flex: 1;
+    }
+
+    .listBtn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-right: 5px;
+
+        .btn {
+            margin: 5px 0;
+            font-size: 23px;
         }
     }
 `;
