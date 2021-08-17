@@ -7,12 +7,15 @@ import {
 
 import { HeaderModule } from "src/modules";
 import { router } from "src/routes";
+import { breakpoint } from "src/utils";
+import { StyledBackground, SidebarComponent } from "src/components";
 
 export const Layout = () => {
     return (
         <Container>
+            <StyledBackground />
             <div className="sidebarLayout">
-                <h1>side bar</h1>
+                <SidebarComponent />
             </div>
             <div className="mainContentLayout">
                 <div className="headerLayout">
@@ -39,9 +42,31 @@ const Container = styled.div`
 
     .sidebarLayout {
         flex: 1;
+
+        ${breakpoint.breakIpadPro`
+            flex: 2;
+        `}
+
+        ${breakpoint.breakMobile`
+            display: none;
+        `}
     }
 
     .mainContentLayout {
         flex: 4;
+        /* padding: 0 20px; */
+
+        ${breakpoint.breakIpadPro`
+            flex: 5;
+        `}
+
+        ${breakpoint.breakMobile`
+            flex: 1;
+        `}
+    }
+
+    .headerLayout {
+        position: sticky;
+        top: 0;
     }
 `;

@@ -1,5 +1,9 @@
+import { StyledHomePage } from "src/components";
+
 export const Home = () => {
     return (
-        <h1>home</h1>
+        <StyledHomePage>
+            <h1>home</h1>
+        </StyledHomePage>
     );
 };
