@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { StyledButton, StyledButtonUnderLine, AvatarCommon } from "src/components";
 import { breakpoint } from "src/utils";
 import { authSelector } from "src/redux";
+import { MenuHeaderModule } from "src/modules";
 
 export const HeaderComponent = ({
     isScrollDown = false,
@@ -33,8 +34,10 @@ export const HeaderComponent = ({
                     <div className="avatar">
                         <AvatarCommon 
                             imgPath={userInfo.avatarUrl}
-                            // width={50}
                         />
+                        <div className="menuHeader">
+                            <MenuHeaderModule />
+                        </div>
                     </div>
                 ) : (
                     <div className="loginBtn">
@@ -107,6 +110,23 @@ const Container = styled.div`
         .loginBtn,
         .avatar {
             margin-left: 20px;
+        }
+
+        .avatar {
+            position: relative;
+
+            &:hover {
+                .menuHeader {
+                    display: block;
+                }
+            }
+
+            .menuHeader {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                display: none;
+            }
         }
     }
 `;

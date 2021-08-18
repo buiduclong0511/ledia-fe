@@ -8,3 +8,4 @@ export * from "./SongItemComponent";
 export * from "./ModalComponent";
 export * from "./LoginComponent";
 export * from "./RegisterComponent";
+export * from "./MenuHeaderComponent";
