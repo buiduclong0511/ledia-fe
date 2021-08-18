@@ -3,10 +3,13 @@ import TextField from '@material-ui/core/TextField';
 
 export const InputCommon = ({
     label = "",
-    value = "",
     type = "text",
+    value = "",
     error = "",
-    touched = false
+    touched = false,
+    name = "",
+    onChange = () => {},
+    onBlur = () => {},
 }) => {
     return (
         <Container>
@@ -14,7 +17,13 @@ export const InputCommon = ({
                 label={label}
                 value={value}
                 type={type}
+                error={!!error && touched}
+                helperText={touched && !!error ? error : ""}
+                onChange={onChange}
+                onBlur={onBlur}
                 variant="outlined"
+                name={name}
+                autoComplete=""
             />
         </Container>
     );

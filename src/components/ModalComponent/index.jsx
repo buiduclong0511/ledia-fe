@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const ModalComponent = ({
-    children = null,
-    onCloseModal = () => {}
+    children = null
 }) => {
     return (
         <Container>
-            <div className="overlay" onClick={onCloseModal}></div>
+            <div className="overlay"></div>
             <div className="modalContent">
                 {children}
             </div>

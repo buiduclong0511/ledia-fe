@@ -13,10 +13,10 @@ export const SongItemComponent = ({
                 <div className="overlay">
                     <div className="listBtn">
                         <button className="btn playBtn">
-                            <i class="far fa-play-circle"></i>
+                            <i className="far fa-play-circle"></i>
                         </button>
                         <button className="btn addBtn">
-                            <i class="fas fa-plus-circle"></i>
+                            <i className="fas fa-plus-circle"></i>
                         </button>
                     </div>
                 </div>

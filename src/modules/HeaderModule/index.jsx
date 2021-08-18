@@ -40,11 +40,11 @@ export const HeaderModule = () => {
                 onToggleShowLoginModal={handleToggleShowLoginModal}
             />
             {isShowLoginModal ? (
-                <ModalComponent onCloseModal={handleToggleShowLoginModal}>
+                <ModalComponent>
                     {screen === LOGIN ? (
-                        <LoginModule onSwitch={handleSwitch} />
+                        <LoginModule onSwitch={handleSwitch} onCloseModal={handleToggleShowLoginModal} />
                     ) : (
-                        <RegisterModule onSwitch={handleSwitch} />
+                        <RegisterModule onSwitch={handleSwitch} onCloseModal={handleToggleShowLoginModal} />
                     )}
                 </ModalComponent>
             ) : <></>}
