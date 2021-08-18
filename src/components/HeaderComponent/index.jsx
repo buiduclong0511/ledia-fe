@@ -1,12 +1,17 @@
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
-import { StyledButton, StyledButtonUnderLine } from "src/components";
+import { StyledButton, StyledButtonUnderLine, AvatarCommon } from "src/components";
 import { breakpoint } from "src/utils";
+import { authSelector } from "src/redux";
 
 export const HeaderComponent = ({
     isScrollDown = false,
     onToggleShowLoginModal = () => {}
 }) => {
+    const userInfo = useSelector(authSelector).userInfo;
+    console.log(userInfo);
+
     return (
         <Container isScrollDown={isScrollDown}>
             <div className="searchBox">
@@ -24,9 +29,18 @@ export const HeaderComponent = ({
                         <span className="text">Upload</span>
                     </StyledButtonUnderLine>
                 </div>
-                <div className="loginBtn">
-                    <StyledButton onClick={onToggleShowLoginModal}>Đăng nhập</StyledButton>
-                </div>
+                {userInfo ? (
+                    <div className="avatar">
+                        <AvatarCommon 
+                            imgPath={userInfo.avatarUrl}
+                            // width={50}
+                        />
+                    </div>
+                ) : (
+                    <div className="loginBtn">
+                        <StyledButton onClick={onToggleShowLoginModal}>Đăng nhập</StyledButton>
+                    </div>
+                )}
             </div>
         </Container>
     );
@@ -90,7 +104,8 @@ const Container = styled.div`
             `}
         }
 
-        .loginBtn {
+        .loginBtn,
+        .avatar {
             margin-left: 20px;
         }
     }
