@@ -5,3 +5,6 @@ export * from "./SidebarComponent";
 export * from "./HeaderComponent";
 export * from "./ListSongComponent";
 export * from "./SongItemComponent";
+export * from "./ModalComponent";
+export * from "./LoginComponent";
+export * from "./RegisterComponent";

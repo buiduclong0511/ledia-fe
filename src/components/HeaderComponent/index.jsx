@@ -4,7 +4,8 @@ import { StyledButton, StyledButtonUnderLine } from "src/components";
 import { breakpoint } from "src/utils";
 
 export const HeaderComponent = ({
-    isScrollDown = false
+    isScrollDown = false,
+    onToggleShowLoginModal = () => {}
 }) => {
     return (
         <Container isScrollDown={isScrollDown}>
@@ -24,7 +25,7 @@ export const HeaderComponent = ({
                     </StyledButtonUnderLine>
                 </div>
                 <div className="loginBtn">
-                    <StyledButton>Đăng nhập</StyledButton>
+                    <StyledButton onClick={onToggleShowLoginModal}>Đăng nhập</StyledButton>
                 </div>
             </div>
         </Container>
