@@ -8,7 +8,8 @@ import { MenuHeaderModule } from "src/modules";
 
 export const HeaderComponent = ({
     isScrollDown = false,
-    onToggleShowLoginModal = () => {}
+    onToggleShowLoginModal = () => {},
+    onPushToUpload = () => {}
 }) => {
     const userInfo = useSelector(authSelector).userInfo;
     console.log(userInfo);
@@ -25,7 +26,7 @@ export const HeaderComponent = ({
             </div>
             <div className="listBtn">
                 <div className="uploadBtn">
-                    <StyledButtonUnderLine>
+                    <StyledButtonUnderLine onClick={onPushToUpload}>
                         <i className="fas fa-cloud-upload-alt"></i>
                         <span className="text">Upload</span>
                     </StyledButtonUnderLine>

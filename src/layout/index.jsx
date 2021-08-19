@@ -11,23 +11,23 @@ import { SidebarComponent } from "src/components";
 export const Layout = () => {
     return (
         <div className="grid">
-            <div className="row no-gutters">
-                <div className="col l-2 m-3 c-0">
-                    <SidebarComponent />
+            <Router>
+                <div className="row no-gutters">
+                    <div className="col l-2 m-3 c-0">
+                        <SidebarComponent />
+                    </div>
+                    <div className="col l-10 m-9 c-12">
+                            <HeaderModule />
+                            <Switch>
+                                {router.map((routerEle, index) => {
+                                    return (
+                                        <Route key={index} path={routerEle.path} component={routerEle.component} exact />
+                                    );
+                                })}
+                            </Switch>
+                    </div>
                 </div>
-                <div className="col l-10 m-9 c-12">
-                    <Router>
-                        <HeaderModule />
-                        <Switch>
-                            {router.map((routerEle, index) => {
-                                return (
-                                    <Route key={index} path={routerEle.path} component={routerEle.component} />
-                                );
-                            })}
-                        </Switch>
-                    </Router>
-                </div>
-            </div>
+            </Router>
         </div>
     );
 };

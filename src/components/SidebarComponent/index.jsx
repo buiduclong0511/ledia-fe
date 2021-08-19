@@ -1,11 +1,14 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+
+import { PATH_HOME } from "src/routes";
 
 export const SidebarComponent = () => {
     return (
         <Container>
-            <div className="logo">
+            <Link to={PATH_HOME} className="logo">
                 <img src="images/logos/logo.png" alt="" className="logoImg" />
-            </div>
+            </Link>
         </Container>
     );
 };

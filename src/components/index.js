@@ -9,3 +9,4 @@ export * from "./ModalComponent";
 export * from "./LoginComponent";
 export * from "./RegisterComponent";
 export * from "./MenuHeaderComponent";
+export * from "./ImagePreviewComponent";

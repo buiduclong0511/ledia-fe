@@ -8,6 +8,8 @@ export const InputCommon = ({
     error = "",
     touched = false,
     name = "",
+    multiline = false,
+    required = false,
     onChange = () => {},
     onBlur = () => {},
 }) => {
@@ -24,6 +26,10 @@ export const InputCommon = ({
                 variant="outlined"
                 name={name}
                 autoComplete=""
+                fullWidth
+                multiline={multiline}
+                maxRows={10}
+                required={required}
             />
         </Container>
     );
@@ -54,5 +60,9 @@ const Container = styled.div`
 
     .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
         border-color: #fff;
+    }
+
+    .MuiInputBase-inputMultiline::-webkit-scrollbar-thumb {
+        background: #fff;
     }
 `;
