@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/ledia-fe/static/css/main.049a042f.chunk.css",
+    "main.js": "/ledia-fe/static/js/main.488ae97c.chunk.js",
+    "main.js.map": "/ledia-fe/static/js/main.488ae97c.chunk.js.map",
+    "runtime-main.js": "/ledia-fe/static/js/runtime-main.4e3ded31.js",
+    "runtime-main.js.map": "/ledia-fe/static/js/runtime-main.4e3ded31.js.map",
+    "static/css/2.f3650c8d.chunk.css": "/ledia-fe/static/css/2.f3650c8d.chunk.css",
+    "static/js/2.20db9e90.chunk.js": "/ledia-fe/static/js/2.20db9e90.chunk.js",
+    "static/js/2.20db9e90.chunk.js.map": "/ledia-fe/static/js/2.20db9e90.chunk.js.map",
+    "static/js/3.45cc57e1.chunk.js": "/ledia-fe/static/js/3.45cc57e1.chunk.js",
+    "static/js/3.45cc57e1.chunk.js.map": "/ledia-fe/static/js/3.45cc57e1.chunk.js.map",
+    "index.html": "/ledia-fe/index.html",
+    "static/css/2.f3650c8d.chunk.css.map": "/ledia-fe/static/css/2.f3650c8d.chunk.css.map",
+    "static/css/main.049a042f.chunk.css.map": "/ledia-fe/static/css/main.049a042f.chunk.css.map",
+    "static/js/2.20db9e90.chunk.js.LICENSE.txt": "/ledia-fe/static/js/2.20db9e90.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4e3ded31.js",
+    "static/css/2.f3650c8d.chunk.css",
+    "static/js/2.20db9e90.chunk.js",
+    "static/css/main.049a042f.chunk.css",
+    "static/js/main.488ae97c.chunk.js"
+  ]
+}
