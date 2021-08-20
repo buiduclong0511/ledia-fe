@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ledia-fe/static/css/main.049a042f.chunk.css",
-    "main.js": "/ledia-fe/static/js/main.488ae97c.chunk.js",
-    "main.js.map": "/ledia-fe/static/js/main.488ae97c.chunk.js.map",
+    "main.js": "/ledia-fe/static/js/main.9c0ae5b6.chunk.js",
+    "main.js.map": "/ledia-fe/static/js/main.9c0ae5b6.chunk.js.map",
     "runtime-main.js": "/ledia-fe/static/js/runtime-main.4e3ded31.js",
     "runtime-main.js.map": "/ledia-fe/static/js/runtime-main.4e3ded31.js.map",
     "static/css/2.f3650c8d.chunk.css": "/ledia-fe/static/css/2.f3650c8d.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.f3650c8d.chunk.css",
     "static/js/2.20db9e90.chunk.js",
     "static/css/main.049a042f.chunk.css",
-    "static/js/main.488ae97c.chunk.js"
+    "static/js/main.9c0ae5b6.chunk.js"
   ]
 }
