@@ -1,5 +1,13 @@
+import { Layout } from "src/layout"
+import { StyledBackground } from "src/components";
+import { PlayerModule } from "src/modules";
+
 export const App = () => {
     return (
-        <h1>App</h1>
+        <div className="App">
+            <StyledBackground />
+            <Layout />
+            <PlayerModule />
+        </div>
     );
 };
