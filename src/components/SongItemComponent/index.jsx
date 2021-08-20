@@ -3,7 +3,9 @@ import styled from "styled-components";
 import { breakpoint, useWindowDimensions } from "src/utils";
 
 export const SongItemComponent = ({
-    data = {}
+    data = {},
+    onPlaySong = () => {},
+    onAddSong = () => {}
 }) => {
     const { width } = useWindowDimensions();
     return (
@@ -12,10 +14,10 @@ export const SongItemComponent = ({
                 <img src={data.cover} alt="" />
                 <div className="overlay">
                     <div className="listBtn">
-                        <button className="btn playBtn">
+                        <button className="btn playBtn" onClick={onPlaySong}>
                             <i className="far fa-play-circle"></i>
                         </button>
-                        <button className="btn addBtn">
+                        <button className="btn addBtn" onClick={onAddSong}>
                             <i className="fas fa-plus-circle"></i>
                         </button>
                     </div>
@@ -31,11 +33,11 @@ export const SongItemComponent = ({
                     <div className="singer">{data.singer}</div>
                 </div>
                 <div className="listBtn">
-                    <button className="btn playBtn">
-                        <i class="far fa-play-circle"></i>
+                    <button className="btn playBtn" onClick={onPlaySong}>
+                        <i className="far fa-play-circle"></i>
                     </button>
-                    <button className="btn addBtn">
-                        <i class="fas fa-plus-circle"></i>
+                    <button className="btn addBtn" onClick={onAddSong}>
+                        <i className="fas fa-plus-circle"></i>
                     </button>
                 </div>
             </ContainerMobile>

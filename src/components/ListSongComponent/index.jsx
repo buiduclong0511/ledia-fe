@@ -14,7 +14,7 @@ export const ListSongComponent = ({
                     <div className="row">
                         {listSongs.map(song => {
                             return (
-                                <div className="col l-2 m-4 c-12">
+                                <div key={song.key} className="col l-2 m-4 c-12">
                                     <SongItemModule data={song} />
                                 </div>
                             );

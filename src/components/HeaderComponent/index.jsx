@@ -12,7 +12,7 @@ export const HeaderComponent = ({
     onPushToUpload = () => {}
 }) => {
     const userInfo = useSelector(authSelector).userInfo;
-    console.log(userInfo);
+    // console.log(userInfo);
 
     return (
         <Container isScrollDown={isScrollDown}>
