@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     playlist: [],
+    playingSong: null,
     isPlaying: false
 };
 
@@ -17,6 +18,9 @@ const app = createSlice({
         },
         play(state) {
             state.isPlaying = true;
+        },
+        updatePlayingSong(state, action) {
+            state.playingSong = action.payload;
         }
     }
 });
@@ -25,6 +29,7 @@ export const appSelector = state => state.app;
 export const {
     addSongs,
     replaceSongs,
-    play
+    play,
+    updatePlayingSong
 } = app.actions;
 export default app.reducer;

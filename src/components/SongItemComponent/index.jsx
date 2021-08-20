@@ -4,6 +4,8 @@ import { breakpoint, useWindowDimensions } from "src/utils";
 
 export const SongItemComponent = ({
     data = {},
+    isPlaying = false,
+    isWaiting = false,
     onPlaySong = () => {},
     onAddSong = () => {}
 }) => {
@@ -15,11 +17,13 @@ export const SongItemComponent = ({
                 <div className="overlay">
                     <div className="listBtn">
                         <button className="btn playBtn" onClick={onPlaySong}>
-                            <i className="far fa-play-circle"></i>
+                            <i className={`far fa-${isPlaying ? 'pause' : 'play'}-circle`}></i>
                         </button>
-                        <button className="btn addBtn" onClick={onAddSong}>
-                            <i className="fas fa-plus-circle"></i>
-                        </button>
+                        {isWaiting ? <></> : (
+                            <button className="btn addBtn" onClick={onAddSong}>
+                                <i className="fas fa-plus-circle"></i>
+                            </button>
+                        )}
                     </div>
                 </div>
             </Container>
@@ -36,9 +40,11 @@ export const SongItemComponent = ({
                     <button className="btn playBtn" onClick={onPlaySong}>
                         <i className="far fa-play-circle"></i>
                     </button>
-                    <button className="btn addBtn" onClick={onAddSong}>
-                        <i className="fas fa-plus-circle"></i>
-                    </button>
+                    {isWaiting ? <></> : (
+                        <button className="btn addBtn" onClick={onAddSong}>
+                            <i className="fas fa-plus-circle"></i>
+                        </button>
+                    )}
                 </div>
             </ContainerMobile>
         )

@@ -1,12 +1,17 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { SongItemComponent } from "src/components";
-import { addSongs, play, replaceSongs } from "src/redux";
+import { addSongs, appSelector, play, replaceSongs } from "src/redux";
 
 export const SongItemModule = ({
     data
 }) => {
     const dispatch = useDispatch();
+    const app = useSelector(appSelector);
+    const playlist = app.playlist;
+    const currentSong = app.playingSong || {};
+    const isWaiting = playlist.some(song => song.key === data.key);
+    const isPlaying = currentSong.key === data.key;
 
     // handle function
     const handlePlaySong = () => {
@@ -24,6 +29,8 @@ export const SongItemModule = ({
             data={data}
             onPlaySong={handlePlaySong}
             onAddSong={handleAddSong}
+            isPlaying={isPlaying}
+            isWaiting={isWaiting}
         />
     );
 };
