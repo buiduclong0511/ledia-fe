@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { songApi } from "src/api";
-import { StyledHomePage, ListSongComponent, LoaderCommon } from "src/components";
+import { StyledHomePage, ListSongComponent } from "src/components";
 import { convertSongObj } from "src/utils";
 
 export const Home = () => {

@@ -25,9 +25,6 @@ export const RegisterModule = ({
         try {
             const res = await dispatch(register(values));
             unwrapResult(res);
-            if (res) {
-                onCloseModal();
-            }
         } catch (err) {
             console.log(err.response);
         }

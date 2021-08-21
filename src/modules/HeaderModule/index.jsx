@@ -1,24 +1,28 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { songApi } from "src/api";
 
 import { HeaderComponent, ModalComponent } from "src/components";
 import { LOGIN } from "src/constants";
 import { LoginModule, RegisterModule } from "src/modules";
-import { PATH_UPLOAD } from "src/routes";
+import { authSelector, hideModal, showModal } from "src/redux";
+import { PATH_SEARCH_RESULT, PATH_UPLOAD } from "src/routes";
 import { removeExtraWhitespace, sleep, useDebounce } from "src/utils";
 
 export const HeaderModule = () => {
     const [isScrollDown, setIsScrollDown] = useState(false);
     const [screen, setScreen] = useState(LOGIN);
-    const [isShowLoginModal, setIsShowLoginModal] = useState(false);
-    const [isShowSearchResult, setIsShowSearchResult] = useState(true);
+    // const [isShowLoginModal, setIsShowLoginModal] = useState(false);
+    const dispatch = useDispatch();
+    const [isShowSearchResult, setIsShowSearchResult] = useState(false);
     const [isSearched, setIsSearched] = useState(false);
     const [searchResult, setSearchResult] = useState({
         songs: [],
         playlists: []
     });
     const [isSearching, setIsSearching] = useState(false);
+    const isShowLoginModal = useSelector(authSelector).isShowLoginModal;
     const [keySearch, setKeySearch] = useState("");
     const history = useHistory();
 
@@ -74,7 +78,7 @@ export const HeaderModule = () => {
     };
 
     const handleToggleShowLoginModal = () => {
-        setIsShowLoginModal(!isShowLoginModal);
+        dispatch(isShowSearchResult ? hideModal() : showModal());
     };
 
     const handlePushToUpload = () => {
@@ -98,7 +102,7 @@ export const HeaderModule = () => {
     };
 
     const handleSearchAll = () => {
-        console.log(removeExtraWhitespace(keySearch.trim()));
+        history.push(PATH_SEARCH_RESULT + "/" + removeExtraWhitespace(keySearch.trim()));
     };
     //handle function
 

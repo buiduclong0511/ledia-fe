@@ -25,9 +25,6 @@ export const LoginModule = ({
         try {
             const res = await dispatch(login(values));
             unwrapResult(res);
-            if (res) {
-                onCloseModal();
-            }
         } catch (err) {
             console.log(err.response);
         }

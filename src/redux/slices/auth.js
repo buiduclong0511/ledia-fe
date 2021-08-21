@@ -22,7 +22,8 @@ export const register = createAsyncThunk("auth/register", async (body, { rejectW
 const initialState = {
     userInfo: null,
     token: null,
-    isLoading: false
+    isLoading: false,
+    isShowLoginModal: false
 };
 
 const auth = createSlice({
@@ -33,6 +34,13 @@ const auth = createSlice({
             state.token = null;
             state.isLoading = false;
             state.userInfo = null;
+            state.isShowLoginModal = false;
+        },
+        showModal: (state) => {
+            state.isShowLoginModal = true;
+        },
+        hideModal: (state) => {
+            state.isShowLoginModal = false
         }
     },
     extraReducers: (builder) => {
@@ -41,6 +49,7 @@ const auth = createSlice({
             state.token = token;
             state.userInfo = userInfo;
             state.isLoading = false;
+            state.isShowLoginModal = false;
         });
         builder.addCase(login.pending, (state) => {
             state.isLoading = true;
@@ -56,6 +65,7 @@ const auth = createSlice({
             state.token = token;
             state.userInfo = userInfo;
             state.isLoading = false;
+            state.isShowLoginModal = false;
         });
         builder.addCase(register.pending, (state) => {
             state.isLoading = true;
@@ -71,6 +81,8 @@ const auth = createSlice({
 export const authSelector = state => state.auth;
 
 export const {
-    logout
+    logout,
+    showModal,
+    hideModal
 } = auth.actions;
 export default auth.reducer;

@@ -5,3 +5,5 @@ export * from "./RegisterModule";
 export * from "./MenuHeaderModule";
 export * from "./ImagePreviewModule";
 export * from "./PlayerModule";
+export * from "./SongItemSearchResultModule";
+export * from "./ImageModule";

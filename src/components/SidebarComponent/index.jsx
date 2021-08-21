@@ -7,7 +7,7 @@ export const SidebarComponent = () => {
     return (
         <Container>
             <Link to={PATH_HOME} className="logo">
-                <img src="images/logos/logo.png" alt="" className="logoImg" />
+                <img src="https://res.cloudinary.com/dyhgnyjpb/image/upload/v1629535306/ImagesUploads/logo_yqfwvx.png" alt="" className="logoImg" />
             </Link>
         </Container>
     );

@@ -11,3 +11,4 @@ export * from "./RegisterComponent";
 export * from "./MenuHeaderComponent";
 export * from "./ImagePreviewComponent";
 export * from "./SearchResultComponent";
+export * from "./SongItemSearchResultComponent";

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { ImageCommon } from "src/components";
+import { ImageModule } from "src/modules";
 
 export const SearchResultComponent = ({
     searchResult = {
@@ -21,7 +21,7 @@ export const SearchResultComponent = ({
                         return (
                             <div key={song._id} className="songItem">
                                 <div className="cover">
-                                    <ImageCommon path={song.coverUrl} />
+                                    <ImageModule path={song.coverUrl} />
                                 </div>
                                 <div className="info">
                                     <p className="songName">{song.songName}</p>
@@ -37,7 +37,7 @@ export const SearchResultComponent = ({
                     <div className="heading">Playlist</div>
                     <div className="songItem">
                         <div className="cover">
-                            <ImageCommon path="images/ha-con-vuong-nang.jpg" />
+                            <ImageModule path="images/ha-con-vuong-nang.jpg" />
                         </div>
                         <div className="info">
                             <p className="songName">SongName</p>
@@ -46,7 +46,7 @@ export const SearchResultComponent = ({
                     </div>
                     <div className="songItem">
                         <div className="cover">
-                            <ImageCommon path="images/ha-con-vuong-nang.jpg" />
+                            <ImageModule path="images/ha-con-vuong-nang.jpg" />
                         </div>
                         <div className="info">
                             <p className="songName">SongName</p>
@@ -55,7 +55,7 @@ export const SearchResultComponent = ({
                     </div>
                     <div className="songItem">
                         <div className="cover">
-                            <ImageCommon path="images/ha-con-vuong-nang.jpg" />
+                            <ImageModule path="images/ha-con-vuong-nang.jpg" />
                         </div>
                         <div className="info">
                             <p className="songName">SongName</p>
@@ -107,6 +107,18 @@ const Container = styled.div`
 
         .info {
             padding-left: 5px;
+
+            .songName {
+                text-overflow: ellipsis;
+            }
+
+            .singer {
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                max-width: calc(100% - 10px);
+                overflow: hidden;
+                font-size: 13px;
+            }
         }
     }
 

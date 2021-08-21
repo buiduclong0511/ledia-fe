@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { songApi } from "src/api";
-import { InputCommon, SelectCommon, StyledButton, StyledUploadPage, LoaderOverlay } from "src/components";
+import { InputCommon, StyledButton, StyledUploadPage, LoaderOverlay } from "src/components";
 import { ImagePreviewModule } from "src/modules";
 import { authSelector } from "src/redux";
 import { convertFileToBlob, createFormData } from "src/utils";
@@ -14,7 +14,7 @@ export const Upload = () => {
         songName: "",
         singer: "",
         author: "",
-        type: "",
+        // type: "",
         lyrics: "",
         thumb: null,
         audioFile: null,
@@ -22,20 +22,20 @@ export const Upload = () => {
     });
     const [isValidData, setIsValidData] = useState(true);
     const [thumbBlob, setThumbBlob] = useState("");
-    const listTypes = useRef([
-        {
-            value: "Nhạc trẻ",
-            label: "Nhạc trẻ"
-        },
-        {
-            value: "Nhạc rap",
-            label: "Nhạc rap"
-        },
-        {
-            value: "Nhạc vàng",
-            label: "Nhạc vàng"
-        },
-    ]);
+    // const listTypes = useRef([
+    //     {
+    //         value: "Nhạc trẻ",
+    //         label: "Nhạc trẻ"
+    //     },
+    //     {
+    //         value: "Nhạc rap",
+    //         label: "Nhạc rap"
+    //     },
+    //     {
+    //         value: "Nhạc vàng",
+    //         label: "Nhạc vàng"
+    //     },
+    // ]);
 
     // effect function
     const validateUploadData = () => {
@@ -54,12 +54,12 @@ export const Upload = () => {
     // effect
 
     // handle function
-    const handleChangeType = (event) => {
-        setUploadInfo({
-            ...uploadInfo,
-            type: event.target.value
-        });
-    };
+    // const handleChangeType = (event) => {
+    //     setUploadInfo({
+    //         ...uploadInfo,
+    //         type: event.target.value
+    //     });
+    // };
     
     const handleChangeThumb = (event) => {
         setUploadInfo({
@@ -112,9 +112,9 @@ export const Upload = () => {
         if (!filledData.author) {
             filledData.author = "unknown";
         }
-        if (!filledData.type) {
-            filledData.type = "unknown";
-        }
+        // if (!filledData.type) {
+        //     filledData.type = "unknown";
+        // }
         if (!filledData.lyrics) {
             filledData.lyrics = "unknown";
         }
@@ -131,7 +131,7 @@ export const Upload = () => {
     };
     // handle function
 
-    console.log("upload info: ", uploadInfo);
+    // console.log("upload info: ", uploadInfo);
 
     return (
         <StyledUploadPage>
@@ -178,12 +178,12 @@ export const Upload = () => {
                                 value={uploadInfo.author}
                                 onChange={handleChangeAuthor}
                             />
-                            <SelectCommon 
+                            {/* <SelectCommon 
                                 label="Thể loại"
                                 options={listTypes.current}
                                 value={uploadInfo.type}
                                 onChange={handleChangeType}
-                            />
+                            /> */}
                             <InputCommon 
                                 label="Lời bài hát"
                                 multiline
