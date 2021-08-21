@@ -4,13 +4,14 @@ import 'react-jinke-music-player/assets/index.css'
 import { useSelector, useDispatch } from 'react-redux';
 
 import { appSelector, updatePlayingSong } from 'src/redux';
-import { convertSongObj } from 'src/utils';
+import { convertSongObj, useWindowDimensions } from 'src/utils';
 
 export const PlayerModule = () => {
     const player = useSelector(appSelector);
     const dispatch = useDispatch();
     const volumeRef = useRef(null);
     const audioRef = useRef(null);
+    const { width } = useWindowDimensions();
 
     // handle function
     const handleAudioPlay = (audioInfo) => {
@@ -30,11 +31,11 @@ export const PlayerModule = () => {
             audioLists={player.playlist}
             autoPlay={player.isPlaying}
             quietUpdate 
-            defaultPosition={{ right: 100, top: 100 }}
+            defaultPosition={{ right: width > 575 ? 100 : 20, top: width > 575 ? 100 : 100 }}
             clearPriorAudioLists
             showThemeSwitch={false}
             theme={"dark"}
-            mode="full"
+            mode={width > 575 ? "full" : "mini"}
             onAudioPlay={handleAudioPlay}
             getAudioInstance={handleGetAudioRef}
         />
