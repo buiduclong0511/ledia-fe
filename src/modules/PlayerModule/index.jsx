@@ -38,6 +38,7 @@ export const PlayerModule = () => {
             mode={width > 575 ? "full" : "mini"}
             onAudioPlay={handleAudioPlay}
             getAudioInstance={handleGetAudioRef}
+            showDownload={false}
         />
     );
 };

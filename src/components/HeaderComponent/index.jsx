@@ -1,15 +1,25 @@
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+import ClipLoader from "react-spinners/ClipLoader";
 
-import { StyledButton, StyledButtonUnderLine, AvatarCommon } from "src/components";
+import { StyledButton, StyledButtonUnderLine, AvatarCommon, SearchResultComponent } from "src/components";
 import { breakpoint } from "src/utils";
 import { authSelector } from "src/redux";
 import { MenuHeaderModule } from "src/modules";
 
 export const HeaderComponent = ({
     isScrollDown = false,
+    isShowSearchResult = false,
+    isSearching = false,
+    keySearch = "",
+    searchResult,
+    isSearched,
+    onSearchAll,
     onToggleShowLoginModal = () => {},
-    onPushToUpload = () => {}
+    onPushToUpload = () => {},
+    onChangeKeySearch = () => {},
+    onFocusInput = () => {},
+    onBlurInput = () => {},
 }) => {
     const userInfo = useSelector(authSelector).userInfo;
     // console.log(userInfo);
@@ -17,12 +27,33 @@ export const HeaderComponent = ({
     return (
         <Container isScrollDown={isScrollDown}>
             <div className="searchBox">
+                {isSearching ? (
+                    <div className="loader">
+                        <ClipLoader size={17} color="#fff" />
+                    </div>
+                ) : <></>}
                 <div className="inputWrapper">
-                    <input type="text" />
+                    <input 
+                        type="text" 
+                        value={keySearch} 
+                        onChange={onChangeKeySearch} 
+                        onFocus={onFocusInput}
+                        onBlur={onBlurInput}
+                    />
                     <span className="searchIcon">
                         <i className="fas fa-search"></i>
                     </span>
                 </div>
+                {isShowSearchResult ? (
+                    <div className="searchResult">
+                        <SearchResultComponent 
+                            searchResult={searchResult} 
+                            keySearch={keySearch} 
+                            isSearched={isSearched} 
+                            onSearchAll={onSearchAll}
+                        />
+                    </div>
+                ) : <></>}
             </div>
             <div className="listBtn">
                 <div className="uploadBtn">
@@ -70,6 +101,26 @@ const Container = styled.div`
         border-bottom: none;
     `}
 
+    .searchBox {
+        position: relative;
+
+        .searchResult {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            padding-top: 5px;
+        }
+
+        .loader {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+    }
+
     .inputWrapper {
         min-width: 300px;
         background-color: ${p => p.theme.colors.gray_1};
@@ -85,12 +136,12 @@ const Container = styled.div`
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            right: 10px;
+            left: 10px;
             cursor: pointer;
         }
         
         input {
-            padding: 12px 32px 12px 20px;
+            padding: 12px 32px 12px 33px;
             height: 100%;
             width: 100%;
             color: #fff;
