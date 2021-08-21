@@ -19,6 +19,9 @@ const app = createSlice({
         play(state) {
             state.isPlaying = true;
         },
+        pause(state) {
+            state.isPlaying = false;
+        },
         updatePlayingSong(state, action) {
             state.playingSong = action.payload;
         }
@@ -30,6 +33,7 @@ export const {
     addSongs,
     replaceSongs,
     play,
+    pause,
     updatePlayingSong
 } = app.actions;
 export default app.reducer;

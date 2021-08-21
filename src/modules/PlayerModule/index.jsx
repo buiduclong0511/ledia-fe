@@ -3,7 +3,7 @@ import ReactJkMusicPlayer from 'react-jinke-music-player'
 import 'react-jinke-music-player/assets/index.css'
 import { useSelector, useDispatch } from 'react-redux';
 
-import { appSelector, updatePlayingSong } from 'src/redux';
+import { appSelector, pause, replaceSongs, updatePlayingSong } from 'src/redux';
 import { convertSongObj, useWindowDimensions } from 'src/utils';
 
 export const PlayerModule = () => {
@@ -25,6 +25,14 @@ export const PlayerModule = () => {
     const handleGetAudioRef = (ref) => {
         audioRef.current = ref;
     };
+
+    const handleAudioPause = () => {
+        dispatch(pause());
+    };
+
+    const handleAudioListsChange = (currentPlayId, audioLists, audioInfo) => {
+        dispatch(replaceSongs(audioLists));
+    };
     // handle function
     return (
         <ReactJkMusicPlayer
@@ -39,6 +47,8 @@ export const PlayerModule = () => {
             onAudioPlay={handleAudioPlay}
             getAudioInstance={handleGetAudioRef}
             showDownload={false}
+            onAudioPause={handleAudioPause}
+            onAudioListsChange={handleAudioListsChange}
         />
     );
 };
