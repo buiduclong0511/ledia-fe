@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { REGISTER } from 'src/constants';
 import { LoginComponent } from 'src/components';
 import { loginSchema } from 'src/utils';
-import { login } from 'src/redux';
+import { login, showToast } from 'src/redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 
 export const LoginModule = ({
@@ -25,8 +25,19 @@ export const LoginModule = ({
         try {
             const res = await dispatch(login(values));
             unwrapResult(res);
+            onCloseModal();
         } catch (err) {
-            console.log(err.response);
+            if (err.response.status === 401) {
+                dispatch(showToast({
+                    message: "Sai tài khoản hoặc mật khẩu!",
+                    type: "error"
+                }));
+            } else {
+                dispatch(showToast({
+                    message: "Lỗi đăng nhập!",
+                    type: "error"
+                }));
+            }
         }
     };
     // handle function

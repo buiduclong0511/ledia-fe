@@ -4,11 +4,11 @@ import { useDispatch } from 'react-redux';
 
 import { RegisterComponent } from 'src/components';
 import { LOGIN } from 'src/constants';
-import { register } from 'src/redux';
+import { register, showToast } from 'src/redux';
 import { registerSchema } from 'src/utils';
 
 export const RegisterModule = ({
-    onCloseModal,
+    onCloseModal = () => {},
     onSwitch = () => {}
 }) => {
     const dispatch = useDispatch();
@@ -25,8 +25,19 @@ export const RegisterModule = ({
         try {
             const res = await dispatch(register(values));
             unwrapResult(res);
+            onCloseModal();
         } catch (err) {
-            console.log(err.response);
+            if (err.response.status === 409) {
+                dispatch(showToast({
+                    message: "Email đã được đăng ký",
+                    type: "error"
+                }));
+            } else {
+                dispatch(showToast({
+                    message: "Có lỗi xảy ra!",
+                    type: "error"
+                }));
+            }
         }
     };
     // handle function

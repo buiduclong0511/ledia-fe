@@ -6,7 +6,7 @@ import { songApi } from "src/api";
 import { HeaderComponent, ModalComponent } from "src/components";
 import { LOGIN } from "src/constants";
 import { LoginModule, RegisterModule } from "src/modules";
-import { authSelector, hideModal, showModal } from "src/redux";
+import { hideLoginModal, modalSelector, showLoginModal } from "src/redux";
 import { PATH_SEARCH_RESULT, PATH_UPLOAD } from "src/routes";
 import { removeExtraWhitespace, sleep, useDebounce } from "src/utils";
 
@@ -22,7 +22,7 @@ export const HeaderModule = () => {
         playlists: []
     });
     const [isSearching, setIsSearching] = useState(false);
-    const isShowLoginModal = useSelector(authSelector).isShowLoginModal;
+    const isShowLoginModal = useSelector(modalSelector).isShowLoginModal;
     const [keySearch, setKeySearch] = useState("");
     const history = useHistory();
 
@@ -77,8 +77,12 @@ export const HeaderModule = () => {
         setScreen(screen);
     };
 
-    const handleToggleShowLoginModal = () => {
-        dispatch(isShowSearchResult ? hideModal() : showModal());
+    const handleHideLoginModal = () => {
+        dispatch(hideLoginModal());
+    };
+
+    const handleShowLoginModal = () => {
+        dispatch(showLoginModal());
     };
 
     const handlePushToUpload = () => {
@@ -110,7 +114,7 @@ export const HeaderModule = () => {
         <>
             <HeaderComponent 
                 isScrollDown={isScrollDown}
-                onToggleShowLoginModal={handleToggleShowLoginModal}
+                onShowLoginModal={handleShowLoginModal}
                 onPushToUpload={handlePushToUpload}
                 isShowSearchResult={isShowSearchResult}
                 isSearching={isSearching}
@@ -125,9 +129,9 @@ export const HeaderModule = () => {
             {isShowLoginModal ? (
                 <ModalComponent>
                     {screen === LOGIN ? (
-                        <LoginModule onSwitch={handleSwitch} onCloseModal={handleToggleShowLoginModal} />
+                        <LoginModule onSwitch={handleSwitch} onCloseModal={handleHideLoginModal} />
                     ) : (
-                        <RegisterModule onSwitch={handleSwitch} onCloseModal={handleToggleShowLoginModal} />
+                        <RegisterModule onSwitch={handleSwitch} onCloseModal={handleHideLoginModal} />
                     )}
                 </ModalComponent>
             ) : <></>}

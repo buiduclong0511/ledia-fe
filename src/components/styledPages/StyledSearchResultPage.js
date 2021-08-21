@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledSearchResultPage = styled.div`
-    padding: 0 20px 100px 20px;
+    padding: 0 20px 150px 20px;
 
     .heading {
         font-size: 25px;

@@ -15,7 +15,7 @@ export const HeaderComponent = ({
     searchResult,
     isSearched,
     onSearchAll,
-    onToggleShowLoginModal = () => {},
+    onShowLoginModal = () => {},
     onPushToUpload = () => {},
     onChangeKeySearch = () => {},
     onFocusInput = () => {},
@@ -73,7 +73,7 @@ export const HeaderComponent = ({
                     </div>
                 ) : (
                     <div className="loginBtn">
-                        <StyledButton onClick={onToggleShowLoginModal}>Đăng nhập</StyledButton>
+                        <StyledButton onClick={onShowLoginModal}>Đăng nhập</StyledButton>
                     </div>
                 )}
             </div>

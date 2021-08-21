@@ -1,9 +1,17 @@
 import styled from "styled-components";
 
 import { ImageModule } from "src/modules";
+import { AddMenuModule } from "src/modules";
 
 export const SongItemSearchResultComponent = ({
-    data = {}
+    data = {},
+    isLiked = false,
+    isShowAddMenu = false,
+    isPlaying = false,
+    onAddSongToPlaying,
+    onShowAddMenu = () => {},
+    onHideAddMenu = () => {},
+    onPlaySong = () => {}
 }) => {
     return (
         <Container>
@@ -21,7 +29,20 @@ export const SongItemSearchResultComponent = ({
                 </div>
             </div>
             <div className="controller">
-                controller
+                <button className="btn play" onClick={onPlaySong}>
+                    <i class={`far fa-${isPlaying ? 'pause' : 'play'}-circle`}></i>
+                </button>
+                <button className="btn add" onFocus={onShowAddMenu} onBlur={onHideAddMenu}>
+                    <i class="fas fa-plus-circle"></i>
+                </button>
+                <button className="btn like">
+                    <i class={`${isLiked ? 'fas fa-heart' : 'far fa-heart'}`}></i>
+                </button>
+                {isShowAddMenu ? (
+                    <div className="addMenu">
+                        <AddMenuModule onAddSongToPlaying={onAddSongToPlaying} />
+                    </div>
+                ) : <></>}
             </div>
             <div className="viewsCount">
                 {data.viewsCount} lượt nghe
@@ -47,6 +68,19 @@ const Container = styled.div`
 
     .controller {
         flex: 2;
+        position: relative;
+        
+        .addMenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 2;
+        }
+
+        .btn {
+            padding: 5px;
+            font-size: 20px;
+        }
     }
 
     .viewsCount {

@@ -7,3 +7,4 @@ export * from "./ImagePreviewModule";
 export * from "./PlayerModule";
 export * from "./SongItemSearchResultModule";
 export * from "./ImageModule";
+export * from "./AddMenuModule";
