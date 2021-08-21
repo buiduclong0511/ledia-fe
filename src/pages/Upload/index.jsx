@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { songApi } from "src/api";
-import { InputCommon, SelectCommon, StyledButton, StyledUploadPage, LoaderCommon } from "src/components";
+import { InputCommon, SelectCommon, StyledButton, StyledUploadPage, LoaderOverlay } from "src/components";
 import { ImagePreviewModule } from "src/modules";
 import { authSelector } from "src/redux";
 import { convertFileToBlob, createFormData } from "src/utils";
@@ -136,7 +136,7 @@ export const Upload = () => {
     return (
         <StyledUploadPage>
             {isLoading ? (
-                <LoaderCommon
+                <LoaderOverlay
                     height={70}
                     width={10}
                     margin={5}

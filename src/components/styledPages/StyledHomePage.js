@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { breakpoint } from "src/utils";
 
 export const StyledHomePage = styled.div`
-    padding: 0 20px;
+    padding: 0 20px 50px 20px;
 
     .banner {
         margin: 20px 50px 50px 50px;

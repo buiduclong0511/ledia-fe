@@ -31,24 +31,21 @@ export const Home = () => {
     return (
         <StyledHomePage>
             <div className="banner"></div>
-            {isLoading ? (
-                <LoaderCommon />
-            ) : (
-                <>
-                    <ListSongComponent 
-                        heading="Bài hát được nghe nhiều nhất"
-                        listSongs={songs}
-                    />
-                    <ListSongComponent 
-                        heading="Playlist được yêu thích nhất"
-                        listSongs={songs}
-                    />
-                    <ListSongComponent 
-                        heading="Bài hát nghe gần đây"
-                        listSongs={songs}
-                    />
-                </>
-            )}
+            <ListSongComponent 
+                heading="Bài hát được nghe nhiều nhất"
+                listSongs={songs}
+                isFetching={isLoading}
+            />
+            <ListSongComponent 
+                heading="Playlist được yêu thích nhất"
+                listSongs={songs}
+                isFetching={isLoading}
+            />
+            <ListSongComponent 
+                heading="Bài hát nghe gần đây"
+                listSongs={songs}
+                isFetching={isLoading}
+            />
         </StyledHomePage>
     );
 };

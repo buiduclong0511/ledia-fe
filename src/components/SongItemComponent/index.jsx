@@ -38,7 +38,7 @@ export const SongItemComponent = ({
                 </div>
                 <div className="listBtn">
                     <button className="btn playBtn" onClick={onPlaySong}>
-                        <i className="far fa-play-circle"></i>
+                        <i className={`far fa-${isPlaying ? 'pause' : 'play'}-circle`}></i>
                     </button>
                     {isWaiting ? <></> : (
                         <button className="btn addBtn" onClick={onAddSong}>
