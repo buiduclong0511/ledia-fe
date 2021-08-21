@@ -20,6 +20,7 @@ export const HeaderComponent = ({
     onChangeKeySearch = () => {},
     onFocusInput = () => {},
     onBlurInput = () => {},
+    onKeyUp = () => {}
 }) => {
     const userInfo = useSelector(authSelector).userInfo;
     // console.log(userInfo);
@@ -39,6 +40,7 @@ export const HeaderComponent = ({
                         onChange={onChangeKeySearch} 
                         onFocus={onFocusInput}
                         onBlur={onBlurInput}
+                        onKeyUp={onKeyUp}
                     />
                     <span className="searchIcon">
                         <i className="fas fa-search"></i>

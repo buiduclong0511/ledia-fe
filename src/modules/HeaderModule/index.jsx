@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { songApi } from "src/api";
 
 import { HeaderComponent, ModalComponent } from "src/components";
-import { LOGIN } from "src/constants";
+import { ENTER, LOGIN } from "src/constants";
 import { LoginModule, RegisterModule } from "src/modules";
 import { hideLoginModal, modalSelector, showLoginModal } from "src/redux";
 import { PATH_SEARCH_RESULT, PATH_UPLOAD } from "src/routes";
@@ -108,6 +108,12 @@ export const HeaderModule = () => {
     const handleSearchAll = () => {
         history.push(PATH_SEARCH_RESULT + "/" + removeExtraWhitespace(keySearch.trim()));
     };
+
+    const handleKeyUp = (event) => {
+        if (event.keyCode === ENTER) {
+            handleSearchAll();
+        }
+    };
     //handle function
 
     return (
@@ -125,6 +131,7 @@ export const HeaderModule = () => {
                 onFocusInput={handleFocusInput}
                 onBlurInput={handleBlurInput}
                 onSearchAll={handleSearchAll}
+                onKeyUp={handleKeyUp}
             />
             {isShowLoginModal ? (
                 <ModalComponent>

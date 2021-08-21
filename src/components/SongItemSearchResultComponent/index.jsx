@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import { ImageModule } from "src/modules";
 import { AddMenuModule } from "src/modules";
+import { breakpoint } from "src/utils";
 
 export const SongItemSearchResultComponent = ({
     data = {},
@@ -26,9 +27,25 @@ export const SongItemSearchResultComponent = ({
                 <div className="songNameNSinger">
                     <div className="songName">{data.songName}</div>
                     <div className="singer">{data.singer}</div>
+                    <div className="controller mobile">
+                        <button className="btn play" onClick={onPlaySong}>
+                            <i class={`far fa-${isPlaying ? 'pause' : 'play'}-circle`}></i>
+                        </button>
+                        <button className="btn add" onFocus={onShowAddMenu} onBlur={onHideAddMenu}>
+                            <i class="fas fa-plus-circle"></i>
+                        </button>
+                        <button className="btn like">
+                            <i class={`${isLiked ? 'fas fa-heart' : 'far fa-heart'}`}></i>
+                        </button>
+                        {isShowAddMenu ? (
+                            <div className="addMenu">
+                                <AddMenuModule onAddSongToPlaying={onAddSongToPlaying} />
+                            </div>
+                        ) : <></>}
+                    </div>
                 </div>
             </div>
-            <div className="controller">
+            <div className="controller desktop">
                 <button className="btn play" onClick={onPlaySong}>
                     <i class={`far fa-${isPlaying ? 'pause' : 'play'}-circle`}></i>
                 </button>
@@ -56,6 +73,22 @@ const Container = styled.div`
     padding: 15px 0;
     border-bottom: 1px solid ${p => p.theme.colors.gray_3};
     align-items: center;
+
+    .desktop {
+        display: block;
+
+        ${breakpoint.breakMobileMedium`
+            display: none;
+        `}
+    }
+
+    .mobile {
+        display: none;
+        
+        ${breakpoint.breakMobileMedium`
+            display: block;
+        `}
+    }
 
     .info {
         display: flex;

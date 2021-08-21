@@ -9,7 +9,7 @@ const deploy_origin = "https://media-player-be.herokuapp.com/api";
 const local_origin = "http://localhost:3001/api";
 
 const axiosClient = axios.create({
-    baseURL: deploy_origin,
+    baseURL: local_origin,
 
     headers: {
         "Content-Type": "application/json",
