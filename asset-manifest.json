@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.049a042f.chunk.css",
-    "main.js": "/static/js/main.4ba16e62.chunk.js",
-    "main.js.map": "/static/js/main.4ba16e62.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.deff1c25.js",
-    "runtime-main.js.map": "/static/js/runtime-main.deff1c25.js.map",
-    "static/css/2.f3650c8d.chunk.css": "/static/css/2.f3650c8d.chunk.css",
-    "static/js/2.9e023b43.chunk.js": "/static/js/2.9e023b43.chunk.js",
-    "static/js/2.9e023b43.chunk.js.map": "/static/js/2.9e023b43.chunk.js.map",
-    "static/js/3.6492cb32.chunk.js": "/static/js/3.6492cb32.chunk.js",
-    "static/js/3.6492cb32.chunk.js.map": "/static/js/3.6492cb32.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.f3650c8d.chunk.css.map": "/static/css/2.f3650c8d.chunk.css.map",
-    "static/css/main.049a042f.chunk.css.map": "/static/css/main.049a042f.chunk.css.map",
-    "static/js/2.9e023b43.chunk.js.LICENSE.txt": "/static/js/2.9e023b43.chunk.js.LICENSE.txt"
+    "main.css": "/ledia-fe/static/css/main.049a042f.chunk.css",
+    "main.js": "/ledia-fe/static/js/main.4ba16e62.chunk.js",
+    "main.js.map": "/ledia-fe/static/js/main.4ba16e62.chunk.js.map",
+    "runtime-main.js": "/ledia-fe/static/js/runtime-main.6851559c.js",
+    "runtime-main.js.map": "/ledia-fe/static/js/runtime-main.6851559c.js.map",
+    "static/css/2.f3650c8d.chunk.css": "/ledia-fe/static/css/2.f3650c8d.chunk.css",
+    "static/js/2.13885d7b.chunk.js": "/ledia-fe/static/js/2.13885d7b.chunk.js",
+    "static/js/2.13885d7b.chunk.js.map": "/ledia-fe/static/js/2.13885d7b.chunk.js.map",
+    "static/js/3.6492cb32.chunk.js": "/ledia-fe/static/js/3.6492cb32.chunk.js",
+    "static/js/3.6492cb32.chunk.js.map": "/ledia-fe/static/js/3.6492cb32.chunk.js.map",
+    "index.html": "/ledia-fe/index.html",
+    "static/css/2.f3650c8d.chunk.css.map": "/ledia-fe/static/css/2.f3650c8d.chunk.css.map",
+    "static/css/main.049a042f.chunk.css.map": "/ledia-fe/static/css/main.049a042f.chunk.css.map",
+    "static/js/2.13885d7b.chunk.js.LICENSE.txt": "/ledia-fe/static/js/2.13885d7b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.deff1c25.js",
+    "static/js/runtime-main.6851559c.js",
     "static/css/2.f3650c8d.chunk.css",
-    "static/js/2.9e023b43.chunk.js",
+    "static/js/2.13885d7b.chunk.js",
     "static/css/main.049a042f.chunk.css",
     "static/js/main.4ba16e62.chunk.js"
   ]
