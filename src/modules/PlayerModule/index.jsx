@@ -37,7 +37,7 @@ export const PlayerModule = () => {
     return (
         <ReactJkMusicPlayer
             audioLists={player.playlist}
-            autoPlay={player.isPlaying}
+            autoPlay={true}
             quietUpdate 
             defaultPosition={{ right: width > 575 ? 100 : 20, top: width > 575 ? 100 : 100 }}
             clearPriorAudioLists
