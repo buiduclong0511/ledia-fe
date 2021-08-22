@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { SongItemSearchResultComponent } from "src/components";
 import { addSongs, appSelector, play, replaceSongs, showToast } from "src/redux";
-import { convertSongObj, sleep } from "src/utils";
+import { convertSongObj } from "src/utils";
 
 export const SongItemSearchResultModule = ({
     data
@@ -17,13 +17,8 @@ export const SongItemSearchResultModule = ({
     const isWaiting = playlist.some(song => song.key === data._id);
 
     // handle function
-    const handleShowAddMenu = () => {
-        setIsShowAddMenu(true);
-    };
-
-    const handleHideAddMenu = async () => {
-        await sleep(150);
-        setIsShowAddMenu(false)
+    const handleToggleAddMenu = () => {
+        setIsShowAddMenu(!isShowAddMenu);
     };
 
     const handlePlaySong = () => {
@@ -39,6 +34,10 @@ export const SongItemSearchResultModule = ({
                 autoHideDuration: 1500
             }));
         } else {
+            dispatch(showToast({
+                message: "Đã thêm vào hàng đợi!",
+                autoHideDuration: 1500
+            }));
             dispatch(addSongs([convertSongObj(data)]));
         }
     };
@@ -49,8 +48,7 @@ export const SongItemSearchResultModule = ({
             data={data}
             isShowAddMenu={isShowAddMenu}
             isPlaying={isPlaying}
-            onShowAddMenu={handleShowAddMenu}
-            onHideAddMenu={handleHideAddMenu}
+            onToggleAddMenu={handleToggleAddMenu}
             onPlaySong={handlePlaySong}
             onAddSongToPlaying={handleAddSongToPlaying}
         />

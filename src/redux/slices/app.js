@@ -15,6 +15,10 @@ const app = createSlice({
         },
         replaceSongs(state, action) {
             state.playlist = action.payload;
+            const isExisted = action.payload.some(song => song.key === state.playingSong?.key);
+            if (!isExisted) {
+                state.playingSong = null;
+            }
         },
         play(state) {
             state.isPlaying = true;

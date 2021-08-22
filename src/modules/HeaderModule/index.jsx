@@ -6,14 +6,14 @@ import { songApi } from "src/api";
 import { HeaderComponent, ModalComponent } from "src/components";
 import { ENTER, LOGIN } from "src/constants";
 import { LoginModule, RegisterModule } from "src/modules";
-import { hideLoginModal, modalSelector, showLoginModal } from "src/redux";
+import { authSelector, hideLoginModal, modalSelector, showLoginModal } from "src/redux";
 import { PATH_SEARCH_RESULT, PATH_UPLOAD } from "src/routes";
-import { removeExtraWhitespace, sleep, useDebounce } from "src/utils";
+import { removeExtraWhitespace, useDebounce } from "src/utils";
 
 export const HeaderModule = () => {
     const [isScrollDown, setIsScrollDown] = useState(false);
     const [screen, setScreen] = useState(LOGIN);
-    // const [isShowLoginModal, setIsShowLoginModal] = useState(false);
+    const userInfo = useSelector(authSelector).userInfo;
     const dispatch = useDispatch();
     const [isShowSearchResult, setIsShowSearchResult] = useState(false);
     const [isSearched, setIsSearched] = useState(false);
@@ -42,6 +42,7 @@ export const HeaderModule = () => {
                 ...searchResult,
                 songs: resSong.data.songs
             });
+            setIsShowSearchResult(true);
         } catch (err) {
             console.log(err.response);
         } finally {
@@ -86,6 +87,10 @@ export const HeaderModule = () => {
     };
 
     const handlePushToUpload = () => {
+        if (!userInfo) {
+            handleShowLoginModal();
+            return;
+        }
         history.push(PATH_UPLOAD);
     };
 
@@ -93,12 +98,11 @@ export const HeaderModule = () => {
         setKeySearch(event.target.value);
     };
 
-    const handleFocusInput = () => {
+    const handleShowSearchResult = () => {
         setIsShowSearchResult(true);
     };
 
-    const handleBlurInput = async () => {
-        await sleep(150);
+    const handleHideSearchResult = () => {
         setIsShowSearchResult(false);
         if (!keySearch.trim()) {
             setIsSearched(false);
@@ -106,6 +110,7 @@ export const HeaderModule = () => {
     };
 
     const handleSearchAll = () => {
+        handleHideSearchResult();
         history.push(PATH_SEARCH_RESULT + "/" + removeExtraWhitespace(keySearch.trim()));
     };
 
@@ -128,8 +133,8 @@ export const HeaderModule = () => {
                 onChangeKeySearch={handleChangeKeySearch}
                 searchResult={searchResult}
                 isSearched={isSearched}
-                onFocusInput={handleFocusInput}
-                onBlurInput={handleBlurInput}
+                onShowSearchResult={handleShowSearchResult}
+                onHideSearchResult={handleHideSearchResult}
                 onSearchAll={handleSearchAll}
                 onKeyUp={handleKeyUp}
             />

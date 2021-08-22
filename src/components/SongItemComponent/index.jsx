@@ -15,16 +15,26 @@ export const SongItemComponent = ({
             <Container>
                 <img src={data.cover} alt="" />
                 <div className="overlay">
-                    <div className="listBtn">
-                        <button className="btn playBtn" onClick={onPlaySong}>
-                            <i className={`far fa-${isPlaying ? 'pause' : 'play'}-circle`}></i>
-                        </button>
-                        {isWaiting ? <></> : (
-                            <button className="btn addBtn" onClick={onAddSong}>
-                                <i className="fas fa-plus-circle"></i>
+                    {isWaiting ? (
+                        <>
+                            {isPlaying ? (
+                                <div className="status">Playing...</div>
+                            ) : (
+                                <div className="status">Waiting...</div>
+                            )}
+                        </>
+                    ) : (
+                        <div className="listBtn">
+                            <button className="btn playBtn" onClick={onPlaySong}>
+                                <i className={`far fa-${isPlaying ? 'pause' : 'play'}-circle`}></i>
                             </button>
-                        )}
-                    </div>
+                            {isWaiting ? <></> : (
+                                <button className="btn addBtn" onClick={onAddSong}>
+                                    <i className="fas fa-plus-circle"></i>
+                                </button>
+                            )}
+                        </div>
+                    )}
                 </div>
             </Container>
         ) : (

@@ -1,17 +1,21 @@
 import styled from "styled-components";
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 export const AddMenuComponent = ({
-    onAddSongToPlaying = () => {}
+    onAddSongToPlaying = () => {},
+    onCloseAddMenu = () => {}
 }) => {
     return (
-        <Container>
-            <div className="addItem" onClick={onAddSongToPlaying}>
-                Thêm vào danh sách đang phát
-            </div>
-            <div className="addItem">
-                Thêm vào playlist
-            </div>
-        </Container>
+        <ClickAwayListener onClickAway={onCloseAddMenu}>
+            <Container>
+                    <div className="addItem" onClick={onAddSongToPlaying}>
+                        Thêm vào danh sách đang phát
+                    </div>
+                    <div className="addItem">
+                        Thêm vào playlist
+                    </div>
+            </Container>
+        </ClickAwayListener>
     );
 };
 

@@ -10,8 +10,7 @@ export const SongItemSearchResultComponent = ({
     isShowAddMenu = false,
     isPlaying = false,
     onAddSongToPlaying,
-    onShowAddMenu = () => {},
-    onHideAddMenu = () => {},
+    onToggleAddMenu = () => {},
     onPlaySong = () => {}
 }) => {
     return (
@@ -29,17 +28,20 @@ export const SongItemSearchResultComponent = ({
                     <div className="singer">{data.singer}</div>
                     <div className="controller mobile">
                         <button className="btn play" onClick={onPlaySong}>
-                            <i class={`far fa-${isPlaying ? 'pause' : 'play'}-circle`}></i>
+                            <i className={`far fa-${isPlaying ? 'pause' : 'play'}-circle`}></i>
                         </button>
-                        <button className="btn add" onFocus={onShowAddMenu} onBlur={onHideAddMenu}>
-                            <i class="fas fa-plus-circle"></i>
+                        <button className="btn add" onClick={onToggleAddMenu}>
+                            <i className="fas fa-plus-circle"></i>
                         </button>
                         <button className="btn like">
-                            <i class={`${isLiked ? 'fas fa-heart' : 'far fa-heart'}`}></i>
+                            <i className={`${isLiked ? 'fas fa-heart' : 'far fa-heart'}`}></i>
                         </button>
                         {isShowAddMenu ? (
                             <div className="addMenu">
-                                <AddMenuModule onAddSongToPlaying={onAddSongToPlaying} />
+                                <AddMenuModule 
+                                    onAddSongToPlaying={onAddSongToPlaying}
+                                    onCloseAddMenu={onToggleAddMenu}
+                                />
                             </div>
                         ) : <></>}
                     </div>
@@ -47,13 +49,13 @@ export const SongItemSearchResultComponent = ({
             </div>
             <div className="controller desktop">
                 <button className="btn play" onClick={onPlaySong}>
-                    <i class={`far fa-${isPlaying ? 'pause' : 'play'}-circle`}></i>
+                    <i className={`far fa-${isPlaying ? 'pause' : 'play'}-circle`}></i>
                 </button>
-                <button className="btn add" onFocus={onShowAddMenu} onBlur={onHideAddMenu}>
-                    <i class="fas fa-plus-circle"></i>
+                <button className="btn add" onClick={onToggleAddMenu}>
+                    <i className="fas fa-plus-circle"></i>
                 </button>
                 <button className="btn like">
-                    <i class={`${isLiked ? 'fas fa-heart' : 'far fa-heart'}`}></i>
+                    <i className={`${isLiked ? 'fas fa-heart' : 'far fa-heart'}`}></i>
                 </button>
                 {isShowAddMenu ? (
                     <div className="addMenu">

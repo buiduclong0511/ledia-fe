@@ -1,9 +1,13 @@
 import { AddMenuComponent } from "src/components";
 
 export const AddMenuModule = ({
-    onAddSongToPlaying
+    onAddSongToPlaying,
+    onCloseAddMenu
 }) => {
     return (
-        <AddMenuComponent onAddSongToPlaying={onAddSongToPlaying} />
+        <AddMenuComponent 
+            onAddSongToPlaying={onAddSongToPlaying}
+            onCloseAddMenu={onCloseAddMenu}
+        />
     );
 };

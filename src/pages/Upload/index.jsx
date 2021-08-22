@@ -1,15 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { songApi } from "src/api";
 import { InputCommon, StyledButton, StyledUploadPage, LoaderOverlay } from "src/components";
 import { ImagePreviewModule } from "src/modules";
-import { authSelector } from "src/redux";
+import { authSelector, showLoginModal } from "src/redux";
 import { convertFileToBlob, createFormData } from "src/utils";
 
 export const Upload = () => {
     const userInfo = useSelector(authSelector).userInfo;
     const [isLoading, setIsLoading] = useState(false);
+    const history = useHistory();
+    const dispatch = useDispatch();
     const [uploadInfo, setUploadInfo] = useState({
         songName: "",
         singer: "",
@@ -18,24 +22,10 @@ export const Upload = () => {
         lyrics: "",
         thumb: null,
         audioFile: null,
-        poster: userInfo._id
+        poster: userInfo?._id
     });
     const [isValidData, setIsValidData] = useState(true);
     const [thumbBlob, setThumbBlob] = useState("");
-    // const listTypes = useRef([
-    //     {
-    //         value: "Nhạc trẻ",
-    //         label: "Nhạc trẻ"
-    //     },
-    //     {
-    //         value: "Nhạc rap",
-    //         label: "Nhạc rap"
-    //     },
-    //     {
-    //         value: "Nhạc vàng",
-    //         label: "Nhạc vàng"
-    //     },
-    // ]);
 
     // effect function
     const validateUploadData = () => {
@@ -47,6 +37,13 @@ export const Upload = () => {
     // effect function
 
     // effect
+    useEffect(() => {
+        if (!userInfo) {
+            dispatch(showLoginModal());
+            history.goBack();
+        }
+    }, []);
+
     useEffect(() => {
         setIsValidData(validateUploadData());
         // eslint-disable-next-line react-hooks/exhaustive-deps

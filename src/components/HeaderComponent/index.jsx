@@ -6,6 +6,7 @@ import { StyledButton, StyledButtonUnderLine, AvatarCommon, SearchResultComponen
 import { breakpoint } from "src/utils";
 import { authSelector } from "src/redux";
 import { MenuHeaderModule } from "src/modules";
+import { ClickAwayListener } from "@material-ui/core";
 
 export const HeaderComponent = ({
     isScrollDown = false,
@@ -15,11 +16,11 @@ export const HeaderComponent = ({
     searchResult,
     isSearched,
     onSearchAll,
+    onHideSearchResult,
     onShowLoginModal = () => {},
     onPushToUpload = () => {},
     onChangeKeySearch = () => {},
-    onFocusInput = () => {},
-    onBlurInput = () => {},
+    onShowSearchResult = () => {},
     onKeyUp = () => {}
 }) => {
     const userInfo = useSelector(authSelector).userInfo;
@@ -27,6 +28,7 @@ export const HeaderComponent = ({
 
     return (
         <Container isScrollDown={isScrollDown}>
+                <ClickAwayListener onClickAway={onHideSearchResult}>
             <div className="searchBox">
                 {isSearching ? (
                     <div className="loader">
@@ -38,14 +40,14 @@ export const HeaderComponent = ({
                         type="text" 
                         value={keySearch} 
                         onChange={onChangeKeySearch} 
-                        onFocus={onFocusInput}
-                        onBlur={onBlurInput}
+                        onFocus={onShowSearchResult}
                         onKeyUp={onKeyUp}
                     />
                     <span className="searchIcon">
                         <i className="fas fa-search"></i>
                     </span>
                 </div>
+                
                 {isShowSearchResult ? (
                     <div className="searchResult">
                         <SearchResultComponent 
@@ -53,10 +55,12 @@ export const HeaderComponent = ({
                             keySearch={keySearch} 
                             isSearched={isSearched} 
                             onSearchAll={onSearchAll}
+                            onHideSearchResult={onHideSearchResult}
                         />
                     </div>
                 ) : <></>}
             </div>
+                </ClickAwayListener>
             <div className="listBtn">
                 <div className="uploadBtn">
                     <StyledButtonUnderLine onClick={onPushToUpload}>

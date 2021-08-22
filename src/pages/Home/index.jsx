@@ -1,19 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { unwrapResult } from "@reduxjs/toolkit";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { songApi } from "src/api";
 import { StyledHomePage, ListSongComponent } from "src/components";
-import { convertSongObj } from "src/utils";
+import { dataSelector, fetchSongsHome } from "src/redux";
 
 export const Home = () => {
-    const [songs, setSongs] = useState([]);
+    const songs = useSelector(dataSelector).listSongsHome;
     const [isLoading, setIsLoading] = useState(false);
+    const dispatch = useDispatch();
+    // console.log(songs);
 
     // effect function
     const fetchSongs = async () => {
         try {
             setIsLoading(true);
-            const res = await songApi.search({ all: true });
-            setSongs(res.data.songs.map(song => convertSongObj(song)));
+            if (songs.length) {
+                return;
+            }
+            const res = await dispatch(fetchSongsHome({ all: true }));
+            unwrapResult(res);
+            // console.log(res);
         } catch (err) {
             console.log(err.response);
         } finally {

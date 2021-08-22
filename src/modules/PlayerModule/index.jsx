@@ -49,6 +49,7 @@ export const PlayerModule = () => {
             showDownload={false}
             onAudioPause={handleAudioPause}
             onAudioListsChange={handleAudioListsChange}
+            showMediaSession
         />
     );
 };

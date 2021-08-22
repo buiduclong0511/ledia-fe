@@ -10,4 +10,8 @@ export const StyledSearchResultPage = styled.div`
     .listResult {
         padding-left: 10px;
     }
+
+    .pagination {
+        color: #fff;
+    }
 `;

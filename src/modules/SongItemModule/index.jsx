@@ -27,10 +27,10 @@ export const SongItemModule = ({
     return (
         <SongItemComponent 
             data={data}
-            onPlaySong={handlePlaySong}
-            onAddSong={handleAddSong}
             isPlaying={isPlaying}
             isWaiting={isWaiting}
+            onPlaySong={handlePlaySong}
+            onAddSong={handleAddSong}
         />
     );
 };

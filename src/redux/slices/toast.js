@@ -6,7 +6,7 @@ const initialState = {
     horizontal: 'right',
     open: false,
     type: "success",
-    message: ""
+    message: "",
 };
 
 const toast = createSlice({
@@ -37,7 +37,12 @@ const toast = createSlice({
             }
         },
         hideToast: (state) => {
+            state.autoHideDuration = 1500;
+            state.vertical = 'top';
+            state.horizontal = 'right';
             state.open = false;
+            state.type = "success";
+            state.message = "";
         }
     }
 });
